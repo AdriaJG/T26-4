@@ -6,7 +6,6 @@ package com.example.demo.services;
 import java.util.List;
 
 import com.example.demo.dto.Reserva;
-import com.example.demo.dto.ReservaId;
 
 /**
  * @author Fenrir
@@ -15,11 +14,11 @@ import com.example.demo.dto.ReservaId;
 public interface IReservasService {
 	public List<Reserva> mostrarReservas();
 	
-	public  Reserva mostrarReservaID(ReservaId id);
+	public  Reserva mostrarReservaID(Long id);
 	
 	public Reserva crearReserva(Reserva reserva);
 	
 	public Reserva modificarReserva(Reserva reserva);
 	
-	public void eliminarReserva(ReservaId id);
+	public void eliminarReserva(Long id);
 }

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.dto.ReservaId;
 import com.example.demo.dto.Reserva;
 import com.example.demo.services.ReservasServiceImpl;
 
@@ -36,7 +35,7 @@ public class ReservasController {
 	}
 	
 	@GetMapping("/reservas/{id}")
-	public Reserva mostrarReservaID(@PathVariable(name="id") ReservaId id){
+	public Reserva mostrarReservaID(@PathVariable(name="id") Long id){
 		return reservasServiceImpl.mostrarReservaID(id);
 	}
 	
@@ -46,7 +45,7 @@ public class ReservasController {
 	}
 	
 	@PostMapping("/reservas/modificar/{id}")
-	public Reserva modificarReservas(@PathVariable(name="id") ReservaId id, @RequestBody Reserva reserva) {
+	public Reserva modificarReservas(@PathVariable(name="id") Long id, @RequestBody Reserva reserva) {
 		Reserva reservaSeleccionado = new Reserva();
 		Reserva reservaModificado = new Reserva();
 		
@@ -60,7 +59,7 @@ public class ReservasController {
 	}
 	
 	@DeleteMapping("reserva/eliminar/{id}")
-	public void eliminarEquioi(@PathVariable(name="id") ReservaId id) {
+	public void eliminarEquioi(@PathVariable(name="id") Long id) {
 		reservasServiceImpl.eliminarReserva(id);
 		
 	}

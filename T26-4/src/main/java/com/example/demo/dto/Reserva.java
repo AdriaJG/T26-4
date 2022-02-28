@@ -23,21 +23,19 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="reserva")
-@IdClass(ReservaId.class)
 public class Reserva {
 	
 	@Id
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "DNI")
-	private String DNI;
-	@Id
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	private Investigadores DNI;
+	
 	@ManyToOne
 	@JoinColumn(name = "numserie")
-	private String numSerie;
+	private Equipos numSerie;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date comienzo;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -47,7 +45,7 @@ public class Reserva {
 		super();
 	}
 
-	public Reserva(String dNI, String numSerie, Date comienzo, Date fin) {
+	public Reserva(Investigadores dNI, Equipos numSerie, Date comienzo, Date fin) {
 		super();
 		DNI = dNI;
 		this.numSerie = numSerie;
@@ -55,19 +53,27 @@ public class Reserva {
 		this.fin = fin;
 	}
 
-	public String getDNI() {
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Investigadores getDNI() {
 		return DNI;
 	}
 
-	public void setDNI(String dNI) {
+	public void setDNI(Investigadores dNI) {
 		DNI = dNI;
 	}
 
-	public String getNumSerie() {
+	public Equipos getNumSerie() {
 		return numSerie;
 	}
 
-	public void setNumSerie(String numSerie) {
+	public void setNumSerie(Equipos numSerie) {
 		this.numSerie = numSerie;
 	}
 
@@ -86,8 +92,5 @@ public class Reserva {
 	public void setFin(Date fin) {
 		this.fin = fin;
 	}
-
-	
-	
 	
 }
