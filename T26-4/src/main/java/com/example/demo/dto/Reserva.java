@@ -29,12 +29,14 @@ public class Reserva {
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@Column(name = "DNI")
+	@ManyToOne
+	@JoinColumn(name = "DNI")
 	private String DNI;
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@Column(name = "numserie")
+	@ManyToOne
+	@JoinColumn(name = "numserie")
 	private String numSerie;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date comienzo;
