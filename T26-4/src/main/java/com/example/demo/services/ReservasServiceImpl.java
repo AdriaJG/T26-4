@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.IReservasDAO;
 import com.example.demo.dto.Reserva;
+import com.example.demo.dto.ReservaId;
 
 /**
  * @author Fenrir
@@ -28,7 +29,7 @@ public class ReservasServiceImpl implements IReservasService{
 	}
 
 	@Override
-	public Reserva mostrarReservaID(Long id) {
+	public Reserva mostrarReservaID(ReservaId id) {
 		// TODO Auto-generated method stub
 		return iReservasDAO.findById(id).get();
 	}
@@ -46,7 +47,7 @@ public class ReservasServiceImpl implements IReservasService{
 	}
 
 	@Override
-	public void eliminarReserva(Long id) {
+	public void eliminarReserva(ReservaId id) {
 		// TODO Auto-generated method stub
 		iReservasDAO.deleteById(id);
 	}

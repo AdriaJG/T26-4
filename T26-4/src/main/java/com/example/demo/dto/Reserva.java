@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,19 +24,19 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="reserva")
+@IdClass(ReservaId.class)
 public class Reserva {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 	@ManyToOne
-	@JoinColumn(name = "DNI")
+	@JoinColumn(name="DNI")
 	private Investigadores DNI;
 	
+	@Id
 	@ManyToOne
-	@JoinColumn(name = "numserie")
-	private Equipos numSerie;
+	@JoinColumn(name="numserie")
 	
+	private Equipos numSerie;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date comienzo;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -51,14 +52,6 @@ public class Reserva {
 		this.numSerie = numSerie;
 		this.comienzo = comienzo;
 		this.fin = fin;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public Investigadores getDNI() {
@@ -92,5 +85,4 @@ public class Reserva {
 	public void setFin(Date fin) {
 		this.fin = fin;
 	}
-	
 }
